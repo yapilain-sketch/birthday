@@ -138,6 +138,10 @@ img {
 
 @media (max-width: 600px) {
     .card {
-        padding: 20px;
+        width: calc(100% - 24px);
+        max-width: none;
+        min-height: calc(100vh - 24px);
+        margin: 12px auto;
+        padding: 24px 20px;
     }
 }
