@@ -42,7 +42,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: pink;
+    background-color: #F5F8FA;
     border-radius: 20px;
     width: 400px;
     min-height: 400px;
@@ -137,16 +137,129 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 20px;
+    min-width: 0;
+}
+
+.greeting-text {
+    width: 100%;
+    max-width: 600px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-align: left;
+    font-family: "Lora", Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.greeting-text p {
+    margin-bottom: 18px;
+}
+
+.greeting-text ol {
+    padding-left: 25px;
+    margin-bottom: 24px;
+}
+
+.greeting-text li {
+    margin-bottom: 12px;
+}
+
+.greeting-ending {
+    text-align: center;
+}
+
+.letter-signature {
+    opacity: 0.65;
+    font-family: "Floriselscript", serif;
+    font-size: 27px;
+    line-height: 0.9;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.third-screen {
+    display: none;
+    opacity: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.6s ease;
+}
+
+.third-screen img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 25px rgba(72, 83, 107, 0.15);
+}
+
+.third-screen .bd {
+    margin-bottom: -15px;
+}
+
+.third-screen p {
+    margin-top: 0;
+}
+
+.third-screen p,
+.third-screen a {
+    font-family: "Lora", Georgia, serif;
+    font-size: 18px;
+}
+
+.third-screen a {
+    color: #7899B8;
+    text-decoration-color: #7899B8;
+    text-underline-offset: 4px;
+    transition: color 0.3s ease;
+}
+
+.third-screen a:hover {
+    color: #526F8D;
+}
+
+.third-screen .letter-signature {
+    opacity: 0.65;
+    font-family: "Floriselscript", serif;
+    font-size: 27px;
+    line-height: 0.9;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
 }
 
 @media (max-width: 600px) {
+    body {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
+}
+
     .card {
         width: calc(100% - 24px);
         max-width: none;
-        height: calc(100vh - 24px);
+        height: calc(100svh - 24px);
         min-height: 0;
         margin: 12px auto;
-        padding: 30px 22px;
+        padding: 24px 20px;
+        overflow: hidden;
+    }
+
+    .first-screen {
+        flex: 1;
+        justify-content: space-evenly;
+        padding-bottom: 55px;
     }
 
     h1,
@@ -155,7 +268,7 @@ img {
     }
 
     img {
-        max-width: 140px;
+        max-width: 200px;
         margin-bottom: 24px;
     }
 
@@ -173,5 +286,14 @@ img {
     .signature {
         font-size: 27px;
         bottom: 30px;
+    }
+
+    .third-screen {
+        width: 100%;
+    }
+
+    .card.third-screen-active {
+        height: auto;
+        min-height: 0;
     }
 }
