@@ -198,6 +198,7 @@ img {
     height: auto;
     margin-bottom: 24px;
     box-shadow: 0 8px 25px rgba(72, 83, 107, 0.15);
+    border-radius: 20px;
 }
 
 .third-screen .bd {
