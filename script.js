@@ -6,32 +6,40 @@ const thirdScreen = document.querySelector(".third-screen");
 const card = document.querySelector(".card");
 
 button.addEventListener("click", function() {
-    button.style.display = "none";
-    firstScreen.style.opacity = "0";
+    button.disabled = true;
 
-    firstScreen.addEventListener("transitionend", function() {
+    function showLetter(event) {
+        if (event.target !== firstScreen ||
+            event.propertyName !== "opacity") {
+            return;
+        }
+
+        firstScreen.removeEventListener("transitionend", showLetter);
         firstScreen.style.display = "none";
 
         letter.style.maxHeight = "none";
         letter.style.visibility = "visible";
         letter.style.opacity = "1";
-    }, { once: true });
+    }
+
+    firstScreen.addEventListener("transitionend", showLetter);
+    firstScreen.style.opacity = "0";
 });
 
 nextButton.addEventListener("click", function() {
-    letter.style.opacity = "0";
+    nextButton.disabled = true;
 
     function showThirdScreen(event) {
-        if (event.target !== letter || event.propertyName !== "opacity") {
+        if (event.target !== letter ||
+            event.propertyName !== "opacity") {
             return;
         }
 
         letter.removeEventListener("transitionend", showThirdScreen);
-
         letter.style.display = "none";
+
         thirdScreen.style.display = "flex";
         card.classList.add("third-screen-active");
-        thirdScreen.style.opacity = "0";
 
         requestAnimationFrame(function() {
             requestAnimationFrame(function() {
@@ -41,4 +49,5 @@ nextButton.addEventListener("click", function() {
     }
 
     letter.addEventListener("transitionend", showThirdScreen);
+    letter.style.opacity = "0";
 });
